@@ -2,42 +2,23 @@ import Foundation
 import UIKit
 
 protocol HeroesDisplaying: AnyObject {
-    func listCharacters(viewModels: [HeroesViewModeling])
-}
-
-final class TableViewDataSource<Cell, Item>: NSObject, UITableViewDataSource where Cell: UITableViewCell {
-    public typealias ItemProvider = (_ tableView: UITableView, _ indexPath: IndexPath, _ item: Item) -> Cell?
-    
-    public var itemProvider: ItemProvider?
-    
-    private let tableView: UITableView
-    private var data = [Item]()
-    
-    init(tableView: UITableView, itemProvider: ItemProvider? = nil) {
-        self.tableView = tableView
-        self.itemProvider = itemProvider
-    }
-    
-    func add(items: [Item]) {
-        data = items
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        data.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let item = data[indexPath.row]
-        
-        guard let cell = itemProvider?(tableView, indexPath, item) else {
-            return UITableViewCell()
-        }
-        
-        return cell
-    }
+    func listCharacters(_ characters: [Character])
+    func updateCharacters(_ characters: [Character])
+    func startFooterLoading()
+    func stopFooterLoading()
+    func showFooterError(from message: String)
+    func showError(image: UIImage?, description: String?, titleButton: String?)
+    func showEmptyState(image: UIImage?, description: String?, titleButton: String?)
 }
 
 final class HeroesViewController: UIViewController {
+    private lazy var feedbackView: FeedbackView = {
+        let uiView = FeedbackView()
+        uiView.translatesAutoresizingMaskIntoConstraints = false
+        uiView.delegate = self
+        return uiView
+    }()
+    
     private lazy var tableView: UITableView = {
         let uiTableView = UITableView()
         uiTableView.translatesAutoresizingMaskIntoConstraints = false
@@ -45,21 +26,47 @@ final class HeroesViewController: UIViewController {
         uiTableView.estimatedRowHeight = 88.0
         uiTableView.separatorStyle = .none
         
-        uiTableView.register(HeroesViewCell.self, forCellReuseIdentifier: String(describing: HeroesViewCell.self))
+        uiTableView.register(CharacterViewCell.self, forCellReuseIdentifier: String(describing: CharacterViewCell.self))
         return uiTableView
     }()
     
-    private lazy var dataSource: TableViewDataSource<HeroesViewCell, HeroesViewModeling> = {
-        let dataSource = TableViewDataSource<HeroesViewCell, HeroesViewModeling>(tableView: tableView)
-        dataSource.itemProvider = { tableView, indexPath, viewModel -> HeroesViewCell? in
-            let identifier = String(describing: HeroesViewCell.self)
-            let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? HeroesViewCell
+    private lazy var searchController: UISearchController = {
+        let controller = UISearchController(searchResultsController: nil)
+        controller.searchResultsUpdater = self
+        controller.obscuresBackgroundDuringPresentation = false
+        controller.searchBar.placeholder = "Search Heroes"
+        controller.searchBar.delegate = self
+        return controller
+    }()
+    
+    private lazy var adapter: TableViewAdapter<CharacterViewCell, Character> = {
+        let adapter = TableViewAdapter<CharacterViewCell, Character>(tableView: tableView)
+        
+        adapter.itemProvider = { tableView, indexPath, character -> CharacterViewCell? in
+            let identifier = String(describing: CharacterViewCell.self)
+            let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? CharacterViewCell
+            
+            let container = DependencyContainer()
+            let service = CharacterService(dependencies: container)
+            let viewModel = CharacterViewModel(character: character, service: service)
+            
+            cell?.delegate = self
             viewModel.inputs.setupOutputs(cell)
             cell?.setupViewModel(viewModel)
+            
             return cell
         }
         
-        return dataSource
+        adapter.itemSelected = { [weak self] tableView, indexPath, character -> Void in
+            let controller = HeroesDetailFactory.make(character: character)
+            self?.navigationController?.pushViewController(controller, animated: true)
+        }
+        
+        adapter.itemPagination = { [weak self] in
+            self?.interactor.loadMoreData()
+        }
+        
+        return adapter
     }()
     
     private let interactor: HeroesInteracting
@@ -77,8 +84,18 @@ final class HeroesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         interactor.loadData()
-        tableView.dataSource = dataSource
+        tableView.dataSource = adapter
+        tableView.delegate = adapter
+        
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = true
+        
         buildLayout()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        interactor.reloadData()
     }
 }
 
@@ -104,8 +121,94 @@ extension HeroesViewController: ViewConfiguration {
 }
 
 extension HeroesViewController: HeroesDisplaying {
-    func listCharacters(viewModels: [HeroesViewModeling]) {
-        dataSource.add(items: viewModels)
+    func listCharacters(_ characters: [Character]) {
+        adapter.update(items: characters)
         tableView.reloadData()
+    }
+    
+    func updateCharacters(_ characters: [Character]) {
+        adapter.add(items: characters)
+        tableView.reloadData()
+    }
+    
+    func startFooterLoading() {
+        let frame = CGRect(origin: .zero, size: CGSize(width: 80.0, height: 80.0))
+        let activityIndicator = UIActivityIndicatorView(frame: frame)
+        activityIndicator.startAnimating()
+        tableView.tableFooterView = activityIndicator
+    }
+    
+    func stopFooterLoading() {
+        tableView.tableFooterView = nil
+    }
+    
+    func showFooterError(from message: String) {
+        let frame = CGRect(origin: .zero, size: CGSize(width: .zero, height: 80.0))
+        let label = UILabel(frame: frame)
+        label.text = message
+        label.textAlignment = .center
+        tableView.tableFooterView = label
+    }
+    
+    func showError(image: UIImage?, description: String?, titleButton: String?) {
+        configureFeedbackView(image: image, description: description, titleButton: titleButton)
+    }
+    
+    func showEmptyState(image: UIImage?, description: String?, titleButton: String?) {
+        configureFeedbackView(image: image, description: description, titleButton: titleButton)
+    }
+    
+    // MARK: - Private Methods
+    private func configureFeedbackView(image: UIImage?, description: String?, titleButton: String?) {
+        feedbackView.setImage(image)
+        feedbackView.setTextDescription(description)
+        feedbackView.setTitleButton(titleButton)
+        
+        view.addSubview(feedbackView)
+        
+        NSLayoutConstraint.activate([
+            feedbackView.topAnchor.constraint(equalTo: view.topAnchor),
+            feedbackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            feedbackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            feedbackView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+    }
+}
+
+extension HeroesViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let text = searchController.searchBar.text else {
+            return
+        }
+        
+        interactor.filterContentForSearch(from: text)
+    }
+}
+
+extension HeroesViewController: UISearchBarDelegate {
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        interactor.beginSearchEditing()
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        interactor.endSearchEditing()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        interactor.initializeCharacters()
+    }
+}
+
+extension HeroesViewController: FeedbackDelegate {
+    func didPressButton(_ sender: UIButton) {
+        feedbackView.removeFromSuperview()
+        view.constraints.filter { $0.firstItem === feedbackView }.forEach { view.removeConstraint($0) }
+        interactor.loadData()
+    }
+}
+
+extension HeroesViewController: CharacterDelegate {
+    func didPressFavoriteOrUnfavorite(from character: Character) {
+        interactor.favoriteOrUnfavorite(from: character)
     }
 }

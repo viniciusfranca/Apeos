@@ -35,16 +35,59 @@ public final class Api<Model: Decodable> {
                 return
             }
             
-            guard
-                let responseData = data,
-                let decoded = try? jsonDecoder.decode(Model.self, from: responseData)
-            else {
-                return completion(.failure(NetworkError.bodyNotFound))
+            guard let httpResponse = response as? HTTPURLResponse else {
+                completion(.failure(NetworkError.connectionFailure))
+                return
             }
             
-            completion(.success(decoded))
+            let status = HTTPStatusCode(rawValue: httpResponse.statusCode) ?? .processing
+            let result = self.evaluateResult(status: status, jsonDecoder: jsonDecoder, responseBody: data)
+            completion(result)
         }
         
         task.resume()
+    }
+    
+    private func evaluateResult(
+        status: HTTPStatusCode,
+        jsonDecoder: JSONDecoder,
+        responseBody: Data?
+    ) -> Result<Model, Error> {
+        
+        let result: Result<Model, Error>
+        
+        switch status {
+        case .ok, .created, .accepted, .noContent:
+            result = handleSuccess(data: responseBody, jsonDecoder: jsonDecoder)
+        case .badRequest, .unprocessableEntity, .preconditionFailed, .preconditionRequired:
+            result = .failure(NetworkError.badRequest)
+        case .unauthorized:
+            result = .failure(NetworkError.unauthorized)
+        case .notFound:
+            result = .failure(NetworkError.notFound)
+        case .tooManyRequests:
+            result = .failure(NetworkError.tooManyRequests)
+        case .requestTimeout:
+            result = .failure(NetworkError.timeout)
+        case .internalServerError, .badGateway, .serviceUnavailable:
+            result = .failure(NetworkError.serverError)
+        case .upgradeRequired:
+            result = .failure(NetworkError.upgradeRequired)
+        default:
+            result = .failure(NetworkError.otherErrors)
+        }
+        
+        return result
+    }
+    
+    private func handleSuccess(data: Data?, jsonDecoder: JSONDecoder) -> Result<Model, Error> {
+        guard
+            let responseData = data,
+            let decoded = try? jsonDecoder.decode(Model.self, from: responseData)
+        else {
+            return .failure(NetworkError.bodyNotFound)
+        }
+        
+        return .success(decoded)
     }
 }

@@ -15,6 +15,20 @@
 		0079285A25DE1684004E4042 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0079285925DE1684004E4042 /* Character.swift */; };
 		0079285C25DE168C004E4042 /* Thumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0079285B25DE168C004E4042 /* Thumbnail.swift */; };
 		0079285E25DE16EA004E4042 /* HeroesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0079285D25DE16EA004E4042 /* HeroesInteractor.swift */; };
+		008BEB9825E070290078E3C3 /* TableViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008BEB9725E070290078E3C3 /* TableViewAdapter.swift */; };
+		00A0145225E1AE1100EA4F1C /* FeedbackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A0145125E1AE1100EA4F1C /* FeedbackView.swift */; };
+		00A015AE25E1E49800EA4F1C /* HeroesFavoritesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A015AD25E1E49800EA4F1C /* HeroesFavoritesInteractor.swift */; };
+		00A015B025E1E49F00EA4F1C /* HeroesFavoritesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A015AF25E1E49F00EA4F1C /* HeroesFavoritesPresenter.swift */; };
+		00A015B225E1E4AD00EA4F1C /* HeroesFavoritesFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A015B125E1E4AD00EA4F1C /* HeroesFavoritesFactory.swift */; };
+		00A015B525E1EDB100EA4F1C /* HeroesEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A015B425E1EDB100EA4F1C /* HeroesEndpoint.swift */; };
+		00A015B725E1EDF500EA4F1C /* HeroesFavoritesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A015B625E1EDF500EA4F1C /* HeroesFavoritesService.swift */; };
+		00A015B925E1F2FB00EA4F1C /* HeroesDetailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A015B825E1F2FB00EA4F1C /* HeroesDetailService.swift */; };
+		00A015BB25E27CFD00EA4F1C /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A015BA25E27CFD00EA4F1C /* DataManager.swift */; };
+		00A015BD25E287E200EA4F1C /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A015BC25E287E200EA4F1C /* DependencyContainer.swift */; };
+		00A015F425E2890F00EA4F1C /* HasMainQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A015F325E2890F00EA4F1C /* HasMainQueue.swift */; };
+		00A015F625E2893200EA4F1C /* HasDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A015F525E2893200EA4F1C /* HasDataManager.swift */; };
+		00A015F825E2B8DD00EA4F1C /* CharacterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A015F725E2B8DD00EA4F1C /* CharacterService.swift */; };
+		00A0160F25E2C4F900EA4F1C /* HeroesInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A0160E25E2C4F900EA4F1C /* HeroesInteractorTests.swift */; };
 		00CDBB1825DDF99700874E9F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CDBB1725DDF99700874E9F /* AppDelegate.swift */; };
 		00CDBB1A25DDF99700874E9F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CDBB1925DDF99700874E9F /* SceneDelegate.swift */; };
 		00CDBB2225DDF99700874E9F /* Apeos.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 00CDBB2025DDF99700874E9F /* Apeos.xcdatamodeld */; };
@@ -24,16 +38,26 @@
 		00CDBCCA25DDFB2D00874E9F /* HeroesDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CDBCC925DDFB2D00874E9F /* HeroesDetailViewController.swift */; };
 		00CDBCCD25DDFB3A00874E9F /* HeroesFavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CDBCCC25DDFB3A00874E9F /* HeroesFavoritesViewController.swift */; };
 		00E1B86425DE1234003F9E32 /* CryptoSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 00E1B86325DE1234003F9E32 /* CryptoSwift */; };
-		00F2945625DF133A00AD2998 /* HeroesViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F2945525DF133A00AD2998 /* HeroesViewCell.swift */; };
+		00F2945625DF133A00AD2998 /* CharacterViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F2945525DF133A00AD2998 /* CharacterViewCell.swift */; };
 		00F2945925DF144200AD2998 /* ViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F2945825DF144100AD2998 /* ViewConfiguration.swift */; };
 		00F2945C25DF174700AD2998 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 00F2945B25DF174700AD2998 /* Kingfisher */; };
-		00F2946325DF1A8300AD2998 /* HeroesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F2946225DF1A8300AD2998 /* HeroesViewModel.swift */; };
+		00F2946325DF1A8300AD2998 /* CharacterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F2946225DF1A8300AD2998 /* CharacterViewModel.swift */; };
 		00F294CF25DF2C5F00AD2998 /* HeroesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F294CE25DF2C5F00AD2998 /* HeroesPresenter.swift */; };
 		00F294D125DF391400AD2998 /* HeroesDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F294D025DF391400AD2998 /* HeroesDetailInteractor.swift */; };
 		00F294D325DF391B00AD2998 /* HeroesDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F294D225DF391B00AD2998 /* HeroesDetailPresenter.swift */; };
 		00F294D725DF3E4E00AD2998 /* HeroesFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F294D625DF3E4E00AD2998 /* HeroesFactory.swift */; };
 		00F294D925DF3E9700AD2998 /* HeroesDetailFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F294D825DF3E9700AD2998 /* HeroesDetailFactory.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		00A0160225E2C45200EA4F1C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 00CDBB0C25DDF99700874E9F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 00CDBB1325DDF99700874E9F;
+			remoteInfo = Apeos;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		0003328225DE034E001DF6FF /* Embed Frameworks */ = {
@@ -57,6 +81,22 @@
 		0079285925DE1684004E4042 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		0079285B25DE168C004E4042 /* Thumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thumbnail.swift; sourceTree = "<group>"; };
 		0079285D25DE16EA004E4042 /* HeroesInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesInteractor.swift; sourceTree = "<group>"; };
+		008BEB9725E070290078E3C3 /* TableViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewAdapter.swift; sourceTree = "<group>"; };
+		00A0145125E1AE1100EA4F1C /* FeedbackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackView.swift; sourceTree = "<group>"; };
+		00A015AD25E1E49800EA4F1C /* HeroesFavoritesInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesFavoritesInteractor.swift; sourceTree = "<group>"; };
+		00A015AF25E1E49F00EA4F1C /* HeroesFavoritesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesFavoritesPresenter.swift; sourceTree = "<group>"; };
+		00A015B125E1E4AD00EA4F1C /* HeroesFavoritesFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesFavoritesFactory.swift; sourceTree = "<group>"; };
+		00A015B425E1EDB100EA4F1C /* HeroesEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesEndpoint.swift; sourceTree = "<group>"; };
+		00A015B625E1EDF500EA4F1C /* HeroesFavoritesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesFavoritesService.swift; sourceTree = "<group>"; };
+		00A015B825E1F2FB00EA4F1C /* HeroesDetailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesDetailService.swift; sourceTree = "<group>"; };
+		00A015BA25E27CFD00EA4F1C /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		00A015BC25E287E200EA4F1C /* DependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyContainer.swift; sourceTree = "<group>"; };
+		00A015F325E2890F00EA4F1C /* HasMainQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HasMainQueue.swift; sourceTree = "<group>"; };
+		00A015F525E2893200EA4F1C /* HasDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HasDataManager.swift; sourceTree = "<group>"; };
+		00A015F725E2B8DD00EA4F1C /* CharacterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterService.swift; sourceTree = "<group>"; };
+		00A015FD25E2C45200EA4F1C /* ApeosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ApeosTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		00A0160125E2C45200EA4F1C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		00A0160E25E2C4F900EA4F1C /* HeroesInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesInteractorTests.swift; sourceTree = "<group>"; };
 		00CDBB1425DDF99700874E9F /* Apeos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Apeos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00CDBB1725DDF99700874E9F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		00CDBB1925DDF99700874E9F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -67,9 +107,9 @@
 		00CDBCC625DDFB1C00874E9F /* HeroesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesViewController.swift; sourceTree = "<group>"; };
 		00CDBCC925DDFB2D00874E9F /* HeroesDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesDetailViewController.swift; sourceTree = "<group>"; };
 		00CDBCCC25DDFB3A00874E9F /* HeroesFavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesFavoritesViewController.swift; sourceTree = "<group>"; };
-		00F2945525DF133A00AD2998 /* HeroesViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesViewCell.swift; sourceTree = "<group>"; };
+		00F2945525DF133A00AD2998 /* CharacterViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterViewCell.swift; sourceTree = "<group>"; };
 		00F2945825DF144100AD2998 /* ViewConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewConfiguration.swift; sourceTree = "<group>"; };
-		00F2946225DF1A8300AD2998 /* HeroesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesViewModel.swift; sourceTree = "<group>"; };
+		00F2946225DF1A8300AD2998 /* CharacterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterViewModel.swift; sourceTree = "<group>"; };
 		00F294CE25DF2C5F00AD2998 /* HeroesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesPresenter.swift; sourceTree = "<group>"; };
 		00F294D025DF391400AD2998 /* HeroesDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesDetailInteractor.swift; sourceTree = "<group>"; };
 		00F294D225DF391B00AD2998 /* HeroesDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesDetailPresenter.swift; sourceTree = "<group>"; };
@@ -78,6 +118,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		00A015FA25E2C45200EA4F1C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		00CDBB1125DDF99700874E9F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -110,10 +157,68 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		00A0145025E1AE0900EA4F1C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				00A0145125E1AE1100EA4F1C /* FeedbackView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		00A015B325E1EDA900EA4F1C /* Endpoint */ = {
+			isa = PBXGroup;
+			children = (
+				00A015B425E1EDB100EA4F1C /* HeroesEndpoint.swift */,
+			);
+			path = Endpoint;
+			sourceTree = "<group>";
+		};
+		00A015FE25E2C45200EA4F1C /* ApeosTests */ = {
+			isa = PBXGroup;
+			children = (
+				00A0160825E2C45B00EA4F1C /* Scenes */,
+				00A0160125E2C45200EA4F1C /* Info.plist */,
+			);
+			path = ApeosTests;
+			sourceTree = "<group>";
+		};
+		00A0160825E2C45B00EA4F1C /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				00A0160925E2C48900EA4F1C /* Heroes */,
+				00A0160A25E2C49100EA4F1C /* HeroesDetail */,
+				00A0160B25E2C49800EA4F1C /* HeroesFavorites */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		00A0160925E2C48900EA4F1C /* Heroes */ = {
+			isa = PBXGroup;
+			children = (
+				00A0160E25E2C4F900EA4F1C /* HeroesInteractorTests.swift */,
+			);
+			path = Heroes;
+			sourceTree = "<group>";
+		};
+		00A0160A25E2C49100EA4F1C /* HeroesDetail */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = HeroesDetail;
+			sourceTree = "<group>";
+		};
+		00A0160B25E2C49800EA4F1C /* HeroesFavorites */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = HeroesFavorites;
+			sourceTree = "<group>";
+		};
 		00CDBB0B25DDF99700874E9F = {
 			isa = PBXGroup;
 			children = (
 				00CDBB1625DDF99700874E9F /* Apeos */,
+				00A015FE25E2C45200EA4F1C /* ApeosTests */,
 				00CDBB1525DDF99700874E9F /* Products */,
 				0003327E25DE034E001DF6FF /* Frameworks */,
 			);
@@ -123,6 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				00CDBB1425DDF99700874E9F /* Apeos.app */,
+				00A015FD25E2C45200EA4F1C /* ApeosTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -130,9 +236,9 @@
 		00CDBB1625DDF99700874E9F /* Apeos */ = {
 			isa = PBXGroup;
 			children = (
-				00F2945725DF143200AD2998 /* Helpers */,
 				00CDBB1725DDF99700874E9F /* AppDelegate.swift */,
 				00CDBB1925DDF99700874E9F /* SceneDelegate.swift */,
+				00F2945725DF143200AD2998 /* Helpers */,
 				00CDBCC025DDFABF00874E9F /* Resources */,
 				0079285425DE1529004E4042 /* Models */,
 				00CDBC8925DDFA6200874E9F /* Scenes */,
@@ -164,6 +270,7 @@
 		00CDBCC225DDFADC00874E9F /* Heroes */ = {
 			isa = PBXGroup;
 			children = (
+				00A015B325E1EDA900EA4F1C /* Endpoint */,
 				00F2945425DF132900AD2998 /* Cell */,
 				00CDBCC625DDFB1C00874E9F /* HeroesViewController.swift */,
 				0079285D25DE16EA004E4042 /* HeroesInteractor.swift */,
@@ -181,6 +288,7 @@
 				00F294D025DF391400AD2998 /* HeroesDetailInteractor.swift */,
 				00F294D225DF391B00AD2998 /* HeroesDetailPresenter.swift */,
 				00F294D825DF3E9700AD2998 /* HeroesDetailFactory.swift */,
+				00A015B825E1F2FB00EA4F1C /* HeroesDetailService.swift */,
 			);
 			path = HeroesDetail;
 			sourceTree = "<group>";
@@ -189,6 +297,10 @@
 			isa = PBXGroup;
 			children = (
 				00CDBCCC25DDFB3A00874E9F /* HeroesFavoritesViewController.swift */,
+				00A015AD25E1E49800EA4F1C /* HeroesFavoritesInteractor.swift */,
+				00A015AF25E1E49F00EA4F1C /* HeroesFavoritesPresenter.swift */,
+				00A015B625E1EDF500EA4F1C /* HeroesFavoritesService.swift */,
+				00A015B125E1E4AD00EA4F1C /* HeroesFavoritesFactory.swift */,
 			);
 			path = HeroesFavorites;
 			sourceTree = "<group>";
@@ -196,8 +308,9 @@
 		00F2945425DF132900AD2998 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				00F2945525DF133A00AD2998 /* HeroesViewCell.swift */,
-				00F2946225DF1A8300AD2998 /* HeroesViewModel.swift */,
+				00F2945525DF133A00AD2998 /* CharacterViewCell.swift */,
+				00F2946225DF1A8300AD2998 /* CharacterViewModel.swift */,
+				00A015F725E2B8DD00EA4F1C /* CharacterService.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -205,7 +318,13 @@
 		00F2945725DF143200AD2998 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				00A0145025E1AE0900EA4F1C /* Views */,
 				00F2945825DF144100AD2998 /* ViewConfiguration.swift */,
+				008BEB9725E070290078E3C3 /* TableViewAdapter.swift */,
+				00A015BA25E27CFD00EA4F1C /* DataManager.swift */,
+				00A015BC25E287E200EA4F1C /* DependencyContainer.swift */,
+				00A015F325E2890F00EA4F1C /* HasMainQueue.swift */,
+				00A015F525E2893200EA4F1C /* HasDataManager.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -213,6 +332,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		00A015FC25E2C45200EA4F1C /* ApeosTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 00A0160425E2C45200EA4F1C /* Build configuration list for PBXNativeTarget "ApeosTests" */;
+			buildPhases = (
+				00A015F925E2C45200EA4F1C /* Sources */,
+				00A015FA25E2C45200EA4F1C /* Frameworks */,
+				00A015FB25E2C45200EA4F1C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				00A0160325E2C45200EA4F1C /* PBXTargetDependency */,
+			);
+			name = ApeosTests;
+			productName = ApeosTests;
+			productReference = 00A015FD25E2C45200EA4F1C /* ApeosTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		00CDBB1325DDF99700874E9F /* Apeos */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00CDBB2B25DDF99800874E9F /* Build configuration list for PBXNativeTarget "Apeos" */;
@@ -244,6 +381,11 @@
 				LastSwiftUpdateCheck = 1240;
 				LastUpgradeCheck = 1240;
 				TargetAttributes = {
+					00A015FC25E2C45200EA4F1C = {
+						CreatedOnToolsVersion = 12.4;
+						LastSwiftMigration = 1240;
+						TestTargetID = 00CDBB1325DDF99700874E9F;
+					};
 					00CDBB1325DDF99700874E9F = {
 						CreatedOnToolsVersion = 12.4;
 					};
@@ -267,11 +409,19 @@
 			projectRoot = "";
 			targets = (
 				00CDBB1325DDF99700874E9F /* Apeos */,
+				00A015FC25E2C45200EA4F1C /* ApeosTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		00A015FB25E2C45200EA4F1C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		00CDBB1225DDF99700874E9F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -284,34 +434,63 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		00A015F925E2C45200EA4F1C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				00A0160F25E2C4F900EA4F1C /* HeroesInteractorTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		00CDBB1025DDF99700874E9F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00A015F625E2893200EA4F1C /* HasDataManager.swift in Sources */,
+				00A015BB25E27CFD00EA4F1C /* DataManager.swift in Sources */,
 				00CDBB1825DDF99700874E9F /* AppDelegate.swift in Sources */,
 				00CDBB2225DDF99700874E9F /* Apeos.xcdatamodeld in Sources */,
 				00CDBCC725DDFB1C00874E9F /* HeroesViewController.swift in Sources */,
 				000333E825DE0CA6001DF6FF /* HeroesService.swift in Sources */,
+				00A015F825E2B8DD00EA4F1C /* CharacterService.swift in Sources */,
 				0079285825DE167C004E4042 /* MarvelData.swift in Sources */,
 				00F2945925DF144200AD2998 /* ViewConfiguration.swift in Sources */,
 				00CDBCCA25DDFB2D00874E9F /* HeroesDetailViewController.swift in Sources */,
+				00A015F425E2890F00EA4F1C /* HasMainQueue.swift in Sources */,
 				0079285625DE1535004E4042 /* MarvelResponse.swift in Sources */,
+				00A015B225E1E4AD00EA4F1C /* HeroesFavoritesFactory.swift in Sources */,
 				0079285A25DE1684004E4042 /* Character.swift in Sources */,
+				00A0145225E1AE1100EA4F1C /* FeedbackView.swift in Sources */,
+				00A015B025E1E49F00EA4F1C /* HeroesFavoritesPresenter.swift in Sources */,
+				00A015B725E1EDF500EA4F1C /* HeroesFavoritesService.swift in Sources */,
 				00CDBCCD25DDFB3A00874E9F /* HeroesFavoritesViewController.swift in Sources */,
 				00F294D725DF3E4E00AD2998 /* HeroesFactory.swift in Sources */,
+				00A015BD25E287E200EA4F1C /* DependencyContainer.swift in Sources */,
 				00F294D125DF391400AD2998 /* HeroesDetailInteractor.swift in Sources */,
-				00F2946325DF1A8300AD2998 /* HeroesViewModel.swift in Sources */,
+				00F2946325DF1A8300AD2998 /* CharacterViewModel.swift in Sources */,
 				00F294D925DF3E9700AD2998 /* HeroesDetailFactory.swift in Sources */,
 				00CDBB1A25DDF99700874E9F /* SceneDelegate.swift in Sources */,
 				00F294D325DF391B00AD2998 /* HeroesDetailPresenter.swift in Sources */,
 				0079285E25DE16EA004E4042 /* HeroesInteractor.swift in Sources */,
-				00F2945625DF133A00AD2998 /* HeroesViewCell.swift in Sources */,
+				00A015AE25E1E49800EA4F1C /* HeroesFavoritesInteractor.swift in Sources */,
+				008BEB9825E070290078E3C3 /* TableViewAdapter.swift in Sources */,
+				00A015B525E1EDB100EA4F1C /* HeroesEndpoint.swift in Sources */,
+				00F2945625DF133A00AD2998 /* CharacterViewCell.swift in Sources */,
 				00F294CF25DF2C5F00AD2998 /* HeroesPresenter.swift in Sources */,
+				00A015B925E1F2FB00EA4F1C /* HeroesDetailService.swift in Sources */,
 				0079285C25DE168C004E4042 /* Thumbnail.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		00A0160325E2C45200EA4F1C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 00CDBB1325DDF99700874E9F /* Apeos */;
+			targetProxy = 00A0160225E2C45200EA4F1C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		00CDBB2525DDF99800874E9F /* LaunchScreen.storyboard */ = {
@@ -325,6 +504,51 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		00A0160525E2C45200EA4F1C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7NLXNBJL35;
+				INFOPLIST_FILE = ApeosTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.vinicius.ApeosTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Apeos.app/Apeos";
+			};
+			name = Debug;
+		};
+		00A0160625E2C45200EA4F1C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7NLXNBJL35;
+				INFOPLIST_FILE = ApeosTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.vinicius.ApeosTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Apeos.app/Apeos";
+			};
+			name = Release;
+		};
 		00CDBB2925DDF99800874E9F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -482,6 +706,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		00A0160425E2C45200EA4F1C /* Build configuration list for PBXNativeTarget "ApeosTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				00A0160525E2C45200EA4F1C /* Debug */,
+				00A0160625E2C45200EA4F1C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		00CDBB0F25DDF99700874E9F /* Build configuration list for PBXProject "Apeos" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

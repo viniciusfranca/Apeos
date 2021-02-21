@@ -8,4 +8,9 @@ struct Thumbnail: Decodable {
         case path
         case fileExtension = "extension"
     }
+    
+    init(path: String, fileExtension: String) {
+        self.path = path
+        self.fileExtension = fileExtension
+    }
 }

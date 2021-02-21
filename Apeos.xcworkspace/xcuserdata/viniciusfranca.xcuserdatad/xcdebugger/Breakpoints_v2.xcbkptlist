@@ -7,64 +7,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "88C955CD-0BA9-48A3-B163-E5F65357290F"
+            uuid = "39E1A1E7-6A23-43B8-87CF-6EB19C0BEFF3"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apeos/Scenes/Heroes/HeroesInteractor.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
-            landmarkName = "loadData()"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
+            landmarkName = "filterContentForSearch(from:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "8CEBC0B1-FBA4-4A35-A973-51633C6E210D"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Apeos/Scenes/Heroes/HeroesViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "108"
-            endingLineNumber = "108"
-            landmarkName = "listCharacters(viewModels:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "0ED56418-5772-4D3B-9702-D52851D39DC3"
+            uuid = "E0A08CBA-3E7B-4414-8ACD-6102680CFF52"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Apeos/Scenes/Heroes/Cell/HeroesViewCell.swift"
+            filePath = "ApeosTests/Scenes/Heroes/HeroesInteractorTests.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "106"
-            endingLineNumber = "106"
-            landmarkName = "configureView(name:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "C84D4119-ABD7-42B1-AB03-A795379017BA"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Apeos/Scenes/Heroes/Cell/HeroesViewCell.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "110"
-            endingLineNumber = "110"
-            landmarkName = "configureImage(from:)"
+            startingLineNumber = "297"
+            endingLineNumber = "297"
+            landmarkName = "testFilterContentForSearch_WhenTextNotEmpty_ShouldCallConfigureCharactersFiltered()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

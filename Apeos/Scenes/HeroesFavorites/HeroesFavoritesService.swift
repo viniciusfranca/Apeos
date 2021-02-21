@@ -1,15 +1,15 @@
 import Foundation
 import NetworkCore
 
-protocol HeroesServicing {
-    func listCharacters(from numberOfPages: Int?, _ completion: @escaping (Result<MarvelResponse, Error>) -> Void)
+protocol HeroesFavoritesServicing {
+    func listCharacters(_ completion: @escaping (Result<[Character], Error>) -> Void)
     func saveCharacter(_ character: Character)
     func checkIfFavorite(from character: Character) -> Character?
     func deleteCharacter(_ character: Character)
 }
 
-final class HeroesService: HeroesServicing {
-    typealias Dependencies = HasMainQueue & HasDataManager
+final class HeroesFavoritesService: HeroesFavoritesServicing {
+    typealias Dependencies = HasDataManager
     
     private let dependencies: Dependencies
     
@@ -17,11 +17,16 @@ final class HeroesService: HeroesServicing {
         self.dependencies = dependencies
     }
     
-    func listCharacters(from numberOfPages: Int?, _ completion: @escaping (Result<MarvelResponse, Error>) -> Void) {
-        Api<MarvelResponse>(endpoint: HeroesEndpoint.characters(numberOfPages: numberOfPages ?? 0)).execute { [weak self] result in
-            self?.dependencies.mainQueue.async {
-                completion(result)
-            }
+    func listCharacters(_ completion: @escaping (Result<[Character], Error>) -> Void) {
+        do {
+            let characters: [Character] = try dependencies.dataManager.retrieve(
+                entity: .characters,
+                from: ["id", "name", "bio", "path", "fileExtension"]
+            )
+            
+            completion(.success(characters))
+        } catch let error {
+            completion(.failure(error))
         }
     }
     

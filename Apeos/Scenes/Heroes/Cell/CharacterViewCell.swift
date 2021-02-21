@@ -1,7 +1,11 @@
 import Kingfisher
 import UIKit
 
-final class HeroesViewCell: UITableViewCell {
+protocol CharacterDelegate: AnyObject {
+    func didPressFavoriteOrUnfavorite(from character: Character)
+}
+
+final class CharacterViewCell: UITableViewCell {
     private lazy var containerView: UIView = {
         let uiView = UIView()
         uiView.translatesAutoresizingMaskIntoConstraints = false
@@ -35,10 +39,14 @@ final class HeroesViewCell: UITableViewCell {
     private lazy var likeButton: UIButton = {
         let uiButton = UIButton()
         uiButton.translatesAutoresizingMaskIntoConstraints = false
+        uiButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
+        uiButton.addTarget(self, action: #selector(pressLikeButton), for: .touchUpInside)
         return uiButton
     }()
     
-    private var viewModel: HeroesViewModeling?
+    private var viewModel: CharacterViewModeling?
+    
+    weak var delegate: CharacterDelegate?
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -50,19 +58,26 @@ final class HeroesViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupViewModel(_ viewModel: HeroesViewModeling) {
+    func setupViewModel(_ viewModel: CharacterViewModeling) {
         self.viewModel = viewModel
         self.viewModel?.inputs.setupView()
+        self.viewModel?.inputs.checkIfFavorites()
+    }
+    
+    // MARK: - Private Methods
+    @objc
+    private func pressLikeButton() {
+        viewModel?.inputs.favoriteOrUnfavorite()
     }
 }
 
-extension HeroesViewCell: ViewConfiguration {
+extension CharacterViewCell: ViewConfiguration {
     func buildViewHierarchy() {
         contentView.addSubview(containerView)
         containerView.addSubview(containerImageView)
         containerView.addSubview(overlayView)
         containerView.addSubview(nameLabel)
-//        containerView.addSubview(likeButton)
+        containerView.addSubview(likeButton)
     }
     
     func setupConstraints() {
@@ -93,6 +108,13 @@ extension HeroesViewCell: ViewConfiguration {
             nameLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 16.0),
             nameLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -16.0),
         ])
+        
+        NSLayoutConstraint.activate([
+            likeButton.widthAnchor.constraint(equalToConstant: 72.0),
+            likeButton.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 8.0),
+            likeButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -8.0),
+            likeButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -8.0),
+        ])
     }
     
     func configureViews() {
@@ -101,12 +123,21 @@ extension HeroesViewCell: ViewConfiguration {
     }
 }
 
-extension HeroesViewCell: HeroesViewModelOutputs {
+extension CharacterViewCell: CharacterViewModelOutputs {
     func configureView(name: String) {
         nameLabel.text = name
     }
     
     func configureImage(from url: URL?) {
         containerImageView.kf.setImage(with: url)
+    }
+    
+    func favoriteOrUnfavorite(from character: Character) {
+        delegate?.didPressFavoriteOrUnfavorite(from: character)
+        viewModel?.inputs.checkIfFavorites()
+    }
+    
+    func updateFavorite(_ isFavorite: Bool) {
+        likeButton.tintColor = isFavorite ? .systemYellow : .systemBlue
     }
 }

@@ -12,6 +12,7 @@
 		000333DF25DE0C3E001DF6FF /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000333DE25DE0C3E001DF6FF /* Api.swift */; };
 		000333E225DE0C5A001DF6FF /* URLSessionable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000333E125DE0C5A001DF6FF /* URLSessionable.swift */; };
 		000333E525DE0C71001DF6FF /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000333E425DE0C71001DF6FF /* NetworkError.swift */; };
+		00A015AB25E1D7CC00EA4F1C /* HTTPStatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A015AA25E1D7CC00EA4F1C /* HTTPStatusCode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		000333DE25DE0C3E001DF6FF /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		000333E125DE0C5A001DF6FF /* URLSessionable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionable.swift; sourceTree = "<group>"; };
 		000333E425DE0C71001DF6FF /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		00A015AA25E1D7CC00EA4F1C /* HTTPStatusCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPStatusCode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 				000333E125DE0C5A001DF6FF /* URLSessionable.swift */,
 				000333E425DE0C71001DF6FF /* NetworkError.swift */,
 				000333DE25DE0C3E001DF6FF /* Api.swift */,
+				00A015AA25E1D7CC00EA4F1C /* HTTPStatusCode.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -151,6 +154,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00A015AB25E1D7CC00EA4F1C /* HTTPStatusCode.swift in Sources */,
 				000333DF25DE0C3E001DF6FF /* Api.swift in Sources */,
 				000333E525DE0C71001DF6FF /* NetworkError.swift in Sources */,
 				000333E225DE0C5A001DF6FF /* URLSessionable.swift in Sources */,
